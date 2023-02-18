@@ -1,10 +1,9 @@
 type ControlPanelProps = {
   name: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
-  greeting: string;
 };
 
-const ControlPanel = ({ name, greeting, onChange }: ControlPanelProps) => {
+const ControlPanel = ({ name, onChange }: ControlPanelProps) => {
   return (
     <form
       className="flex flex-row gap-4 text-white bg-primary-10"
