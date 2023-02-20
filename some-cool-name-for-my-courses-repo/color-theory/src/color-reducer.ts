@@ -1,13 +1,13 @@
 import { rgb } from 'color-convert';
 
-export type UpdateHEXColorAction = {
+type UpdateHEXColorAction = {
   type: 'update-hex-color';
   payload: {
     hexColor: string;
   };
 };
 
-export type UpdateRGBColorAction = {
+type UpdateRGBColorAction = {
   type: 'update-rgb-color';
   payload: {
     rgb: [number, number, number];
@@ -18,13 +18,15 @@ type ColorState = {
   hexColor: string;
 };
 
+export type AdjustColorActions = UpdateHEXColorAction | UpdateRGBColorAction;
+
 export const initialState: ColorState = {
   hexColor: '#000000',
 };
 
 export const colorReducer = (
   state: ColorState = initialState,
-  action: UpdateHEXColorAction | UpdateRGBColorAction,
+  action: AdjustColorActions,
 ): ColorState => {
   if (action.type === 'update-hex-color') {
     return {
@@ -36,7 +38,7 @@ export const colorReducer = (
   if (action.type === 'update-rgb-color') {
     return {
       ...state,
-      hexColor: rgb.hex(action.payload.rgb),
+      hexColor: '#' + rgb.hex(action.payload.rgb),
     };
   }
 
