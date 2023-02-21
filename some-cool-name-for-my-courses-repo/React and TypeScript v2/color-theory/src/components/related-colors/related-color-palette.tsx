@@ -1,6 +1,5 @@
+import { useColorContext } from '../../context';
 import ColorChangeSwatch from '../shared/color-change-swatch';
-import { useContext } from 'react';
-import { ColorContext } from '../../context';
 
 type RelatedColorPaletteProps = {
   title: string;
@@ -11,7 +10,7 @@ const RelatedColorPalette = ({
   title,
   hexColors,
 }: RelatedColorPaletteProps) => {
-  const { dispatch } = useContext(ColorContext);
+  const { dispatch } = useColorContext();
 
   return (
     <section>
